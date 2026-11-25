@@ -1,0 +1,7 @@
+# Reemplazar @usuarioX por los usuarios reales
+/.github/            @usuarioA
+/db/                 @usuarioA
+/docker-compose*.yml @usuarioA
+/backend/            @usuarioB
+/frontend/           @usuarioC
+/docs/               @usuarioC
