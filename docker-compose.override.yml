@@ -1,3 +1,9 @@
-# Modo dev: monta backend/src y recarga automática
-# Responsable: Persona A · Infra/DevOps · Semana 1
-# TODO
+# Modo desarrollo: se aplica solo al hacer "docker compose up" en local.
+# El CI usa "-f docker-compose.yml" y lo ignora.
+services:
+  backend:
+    command: ["node", "--watch", "src/server.js"]
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./backend/src:/app/src
