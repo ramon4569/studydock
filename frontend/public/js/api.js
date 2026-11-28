@@ -1,58 +1,35 @@
-// Cliente fetch de la API
-// Responsable: Persona C · Frontend/Docs · Semana 1
-// Todas las llamadas van a /api, nginx las pasa al backend (ver nginx.conf)
+// Llamadas al backend - Persona C
 
-const API_BASE = '/api';
-
-async function request(path, options = {}) {
-  const res = await fetch(`${API_BASE}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
-    ...options,
-  });
-
-  const texto = await res.text();
-  let data = null;
-  try {
-    data = texto ? JSON.parse(texto) : null;
-  } catch {
-    data = { raw: texto };
-  }
-
+export async function getHealth() {
+  const res = await fetch('/api/health');
   if (!res.ok) {
-    const error = new Error(`HTTP ${res.status}`);
-    error.status = res.status;
-    error.data = data;
-    throw error;
+    throw new Error('Error ' + res.status);
   }
-  return data;
+  return res.json();
 }
 
-export function getHealth() {
-  return request('/health');
-}
-
-// Las siguientes se completan en la Semana 2, cuando B publique el contrato de la API
+// pendientes para la entrega 2
 
 export function listDocuments() {
-  // TODO (Semana 2)
+  // TODO
 }
 
 export function createDocument() {
-  // TODO (Semana 2)
+  // TODO
 }
 
 export function requestSummary() {
-  // TODO (Semana 2)
+  // TODO
 }
 
 export function requestQuiz() {
-  // TODO (Semana 2)
+  // TODO
 }
 
 export function sendAttempt() {
-  // TODO (Semana 2)
+  // TODO
 }
 
 export function getProgress() {
-  // TODO (Semana 2)
+  // TODO
 }
