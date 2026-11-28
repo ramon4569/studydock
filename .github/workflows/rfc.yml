@@ -1,0 +1,39 @@
+name: RFC
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  rfc-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: El PR debe nacer de un RFC aceptado
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          RFC=$(printf '%s\n%s' "$TITLE" "$BODY" | grep -oE 'RFC-[0-9]{4}' | grep -v 'RFC-0000' | head -1 || true)
+          if [ -z "$RFC" ]; then
+            echo "::error::Indica el RFC en el título o la descripción (ej. [RFC-0002] o Implementa: RFC-0002)"
+            exit 1
+          fi
+          N=${RFC#RFC-}
+          F=$(ls docs/rfcs/${N}-*.md 2>/dev/null | head -1 || true)
+          if [ -z "$F" ]; then
+            echo "::error::No existe docs/rfcs/${N}-*.md para $RFC"
+            exit 1
+          fi
+          case "$TITLE" in
+            docs\(rfc\)*) echo "PR de propuesta de $RFC ($F)"; exit 0 ;;
+          esac
+          if ! grep -qE '^- Estado: (Aceptado|Implementado)' "$F"; then
+            echo "::error::$RFC no está Aceptado. Primero se aprueba el RFC y después se implementa."
+            exit 1
+          fi
+          echo "OK: este PR implementa $RFC ($F)"

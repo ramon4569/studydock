@@ -1,5 +1,5 @@
 # RFC-0005: Trazabilidad PR ↔ RFC, líneas base y registro de cambios
-- Estado: En revisión
+- Estado: Aceptado (28/11/2026, aprobado en PR #3)
 - Autor: Ramón E. (Persona A)
 - Fecha: 2026-11-28
 - Revisores: Dubenny (Persona B), Jonh (Persona C)
