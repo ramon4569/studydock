@@ -1,40 +1,30 @@
-// Arranque y navegación
-// Responsable: Persona C · Frontend/Docs · Semana 1
+// Pagina principal - Persona C
 import { getHealth } from './api.js';
 
-const estadoEl = () => document.getElementById('health-status');
-const detalleEl = () => document.getElementById('health-detalle');
-const botonEl = () => document.getElementById('btn-health');
+const estado = document.getElementById('health-status');
+const boton = document.getElementById('btn-health');
 
-function pintarEstado(clase, texto, detalle = '') {
-  const el = estadoEl();
-  el.className = `estado ${clase}`;
-  el.textContent = texto;
-  detalleEl().textContent = detalle;
-}
+async function revisarBackend() {
+  estado.className = 'estado';
+  estado.textContent = 'Comprobando...';
 
-async function comprobarBackend() {
-  botonEl().disabled = true;
-  pintarEstado('estado-cargando', 'Comprobando...');
   try {
-    const data = await getHealth();
-    const extra = data ? JSON.stringify(data) : '';
-    pintarEstado('estado-ok', 'Backend en línea', extra);
-  } catch (err) {
-    const motivo = err.status ? `El backend respondió ${err.status}` : 'No se pudo conectar con el backend';
-    pintarEstado('estado-error', 'Backend no disponible', motivo);
-  } finally {
-    botonEl().disabled = false;
+    await getHealth();
+    estado.className = 'estado ok';
+    estado.textContent = 'Backend en línea';
+  } catch (error) {
+    estado.className = 'estado error';
+    estado.textContent = 'Backend no disponible';
   }
 }
 
 export function init() {
-  botonEl().addEventListener('click', comprobarBackend);
-  comprobarBackend();
+  boton.addEventListener('click', revisarBackend);
+  revisarBackend();
 }
 
 export function navigate() {
-  // TODO (Semana 2): cambiar entre las vistas de apuntes, resumen, quiz y progreso
+  // TODO entrega 2
 }
 
 init();
