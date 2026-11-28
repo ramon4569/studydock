@@ -3,11 +3,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudyDock</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <main id="app"><!-- TODO --></main>
+  <header class="topbar">
+    <h1>StudyDock</h1>
+    <p class="subtitulo">Resúmenes y quizzes de tus apuntes con IA local</p>
+  </header>
+
+  <main id="app">
+    <section class="tarjeta">
+      <h2>Estado del backend</h2>
+      <p id="health-status" class="estado estado-cargando">Comprobando...</p>
+      <p id="health-detalle" class="detalle"></p>
+      <button id="btn-health" type="button">Volver a comprobar</button>
+    </section>
+
+    <section class="tarjeta proximamente">
+      <h2>Próximamente</h2>
+      <p>Pegar apuntes, generar resúmenes y quizzes, y ver tu progreso (Entrega 2).</p>
+    </section>
+  </main>
+
+  <footer class="pie">StudyDock · v0.1.0</footer>
+
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
