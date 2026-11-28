@@ -1,1 +1,49 @@
-/* Responsable: Persona C · Semana 1 */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+header {
+  background: #2563eb;
+  color: white;
+  padding: 15px 25px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.tarjeta {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.estado {
+  font-weight: bold;
+  color: gray;
+}
+
+.ok {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}

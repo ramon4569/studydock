@@ -1,13 +1,24 @@
-<!-- Responsable: Persona C · Semana 1 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudyDock</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <main id="app"><!-- TODO --></main>
+  <header>
+    <h1>StudyDock</h1>
+  </header>
+
+  <main id="app">
+    <div class="tarjeta">
+      <h2>Estado del backend</h2>
+      <p id="health-status" class="estado">Comprobando...</p>
+      <button id="btn-health">Volver a comprobar</button>
+    </div>
+  </main>
+
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
