@@ -1,5 +1,5 @@
 # RFC-0004: Pipeline CI/CD con GitHub Actions
-- Estado: En revisión
+- Estado: Aceptado (28/11/2026, aprobado en PR #1)
 - Autor: Persona A
 - Fecha: 2026-11-25
 - Revisores: Persona B, Persona C
